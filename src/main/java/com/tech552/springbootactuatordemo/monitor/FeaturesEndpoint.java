@@ -7,14 +7,21 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Endpoint(id = "custom")
+@Endpoint(id = "features")
 @Component
-public class CustomActuator {
+public class FeaturesEndpoint {
+    /**
+     * You can trigger this by /actuator/features?id={:id}
+     *
+     * @param id
+     * @return
+     */
     @ReadOperation
     public Map<String, String> customEndpoint(String id) {
         Map<String, String> map = new HashMap();
 
         map.put("id", id);
+        map.put("details", "This is your custom endpoint");
         return map;
     }
 }
